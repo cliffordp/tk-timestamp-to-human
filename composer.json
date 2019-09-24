@@ -1,0 +1,42 @@
+{
+	"name": "cliffordp/tk-timestamp-to-human",
+	"description": "Given a timestamp (assumed in UTC), convert to a human-readable date format using PHP named time zones.",
+	"type": "project",
+	"license": "GPL-3.0-or-later",
+	"authors": [
+		{
+			"name": "TourKick LLC (Clifford Paulick)",
+			"email": "tko@tourkick.com",
+			"homepage": "https://tourkick.com/",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=7.1.0",
+		"tgmpa/tgm-plugin-activation": "~2.6"
+	},
+	"minimum-stability": "stable",
+	"archive": {
+		"exclude": [
+			"!vendor/*",
+			"*.zip",
+			".gitignore",
+			".github",
+			".travis.yml",
+			"composer.phar",
+			"composer.json",
+			"composer.lock",
+			"phpunit.xml",
+			"README.md"
+		]
+	},
+	"autoload": {
+		"psr-4": {
+			"TK_Timestamp_Human\\": "src/"
+		}
+	},
+	"config": {
+		"archive-format": "zip",
+		"optimize-autoloader": true
+	}
+}
