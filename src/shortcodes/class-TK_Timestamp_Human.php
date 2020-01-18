@@ -11,7 +11,7 @@ use TK_Timestamp_Human\Common\Common as Common;
 
 if ( ! class_exists( TK_Timestamp_Human::class ) ) {
 	/**
-	 * The class for the [tk_timestamp_human] shortcode.
+	 * The class for the `[tk_timestamp_human]` shortcode.
 	 */
 	final class TK_Timestamp_Human extends Abstract_Shortcode {
 		/**
@@ -22,8 +22,8 @@ if ( ! class_exists( TK_Timestamp_Human::class ) ) {
 		public function get_defaults(): array {
 			return [
 				'timestamp'  => '', // or use the 'post_id' and 'field_timestamp' arguments
-				'format'     => '', // default from the function is 'c'
-				'time_zone'  => '', // only supports a PHP named time zone
+				'format'     => 'c', // see https://www.php.net/manual/en/function.date.php
+				'time_zone'  => '', // defaults to WP's General Settings time zone (if valid PHP time zone), else UTC. Only supports a PHP named time zone -- see https://www.php.net/manual/en/timezones.php
 				'field_name' => '', // the raw name (including the `wpcf-` prefix if a Types field) or a custom field that should have a UTC timestamp as its value
 				'post_id'    => '', // applicable if using the 'field_timestamp' argument - defaults to current post if empty
 			];

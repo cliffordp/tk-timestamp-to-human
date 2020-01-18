@@ -15,37 +15,6 @@ if ( ! class_exists( Bootstrap::class ) ) {
 	 */
 	class Bootstrap {
 		/**
-		 * The required parent/child theme.
-		 *
-		 * Remove 'child' or leave blank if not required.
-		 * Parent = Stylesheet. Child = Template.
-		 */
-		private $required_theme = [
-			'parent' => '', // stylesheet slug
-			'child'  => '', // template slug
-		];
-
-		/**
-		 * The list of required (and/or recommended) plugins, as passed to TGM Plugin Activation.
-		 *
-		 * These links may contain affiliate links to paid products, which may financially benefit the author of this
-		 * framework or this plugin but do not add to the cost of the paid products. You are not required to use
-		 * these links to obtain the listed products.
-		 *
-		 * @link http://tgmpluginactivation.com/
-		 */
-		private $required_plugins = [
-			[
-				'name'         => 'WP All Export Pro',
-				'slug'         => 'wp-all-export-pro',
-				'source'       => 'external',
-				'required'     => false,
-				'external_url' => 'http://www.wpallimport.com/export/',
-				'version'      => '1.5.3',
-			],
-		];
-
-		/**
 		 * Begins execution of the plugin.
 		 *
 		 * Since everything within the plugin is registered via hooks, then kicking off the plugin from this point in the file
@@ -66,61 +35,6 @@ if ( ! class_exists( Bootstrap::class ) ) {
 			} else {
 				return null;
 			}
-		}
-
-		/**
-		 * Register the required plugins.
-		 *
-		 * @link https://github.com/TGMPA/TGM-Plugin-Activation/blob/master/example.php How/What to put in here.
-		 *
-		 * The variables passed to the `tgmpa()` function should be:
-		 * - an array of plugin arrays;
-		 * - optionally a configuration array.
-		 * If you are not changing anything in the configuration array, you can remove the array and remove the
-		 * variable from the function call: `tgmpa( $plugins );`.
-		 * In that case, the TGMPA default settings will be used.
-		 *
-		 * This function is hooked into `tgmpa_register`, which is fired on the WP `init` action on priority 10.
-		 */
-		public function tgmpa_register_required_plugins(): void {
-			/*
-			 * Array of configuration settings. Amend each line as needed.
-			 */
-			$config = [
-				'id'           => Plugin_Data::plugin_text_domain(),      // Unique ID for hashing notices for multiple instances of TGMPA.
-				'parent_slug'  => 'plugins.php',           // Parent menu slug.
-				'capability'   => 'activate_plugins',      // Capability needed to view plugin install page, should be a capability associated with the parent menu used.
-				'has_notices'  => true,                    // Show admin notices or not.
-				'dismissable'  => false,                   // If false, a user cannot dismiss the nag message.
-				'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
-				'is_automatic' => false,                   // Automatically activate plugins after installation or not.
-				'message'      => '',                      // Message to output right before the plugins table.
-				'strings'      => [
-					'notice_can_install_required'    => _n_noop(
-					// translators: 1: plugin name(s).
-						Plugin_Data::get_plugin_display_name() . ' requires the following plugin: %1$s.',
-						Plugin_Data::get_plugin_display_name() . ' requires the following plugins: %1$s.',
-						Plugin_Data::plugin_text_domain()
-					),
-					'notice_can_install_recommended' => _n_noop(
-					// translators: 1: plugin name(s).
-						Plugin_Data::get_plugin_display_name() . ' recommends the following plugin: %1$s.',
-						Plugin_Data::get_plugin_display_name() . ' recommends the following plugins: %1$s.',
-						Plugin_Data::plugin_text_domain()
-					),
-					'notice_ask_to_update'           => _n_noop(
-					// translators: 1: plugin name(s).
-						'The following plugin needs to be updated to its latest version to ensure maximum compatibility with ' . Plugin_Data::get_plugin_display_name() . ': %1$s.',
-						'The following plugins need to be updated to their latest version to ensure maximum compatibility with ' . Plugin_Data::get_plugin_display_name() . ': %1$s.',
-						Plugin_Data::plugin_text_domain()
-					),
-					'plugin_needs_higher_version'    => __( 'Plugin not activated. A higher version of %s is needed for ' . Plugin_Data::get_plugin_display_name() . '. Please update the plugin.', Plugin_Data::plugin_text_domain() ),
-					// translators: 1: dashboard link.
-					'nag_type'                       => 'error', // Determines admin notice type - can only be one of the typical WP notice classes, such as 'updated', 'update-nag', 'notice-warning', 'notice-info' or 'error'. Some of which may not work as expected in older WP versions.
-				],
-			];
-
-			tgmpa( $this->required_plugins, $config );
 		}
 
 		/**
@@ -153,68 +67,6 @@ if ( ! class_exists( Bootstrap::class ) ) {
 		}
 
 		/**
-		 * Output a message about the required theme missing, and link to Themes page.
-		 */
-		public function notice_missing_required_theme(): void {
-			$admin_link = '';
-
-			$current_screen = get_current_screen();
-
-			if (
-				empty( $current_screen->base )
-				|| 'themes' !== $current_screen->base
-			) {
-				$admin_link = sprintf( ' <a href="%1$s">%1$s</a>', admin_url( 'themes.php' ) );
-			}
-
-
-			// Check Parent
-			if ( ! empty( $this->required_theme['parent'] ) ) {
-				$parent_theme = wp_get_theme( $this->required_theme['parent'] );
-
-				if (
-					$parent_theme->exists()
-					&& ! empty( $parent_theme->get( 'Name' ) )
-				) {
-					$parent_name = $parent_theme->get( 'Name' );
-				} else {
-					$parent_name = $this->required_theme['parent'];
-				}
-			}
-
-			// Check Child
-			if ( ! empty( $this->required_theme['child'] ) ) {
-				$child_theme = wp_get_theme( $this->required_theme['child'] );
-
-				if (
-					$child_theme->exists()
-					&& ! empty( $child_theme->get( 'Name' ) )
-				) {
-					$child_name = $child_theme->get( 'Name' );
-				} else {
-					$child_name = $this->required_theme['child'];
-				}
-			}
-
-			if ( ! empty( $this->required_theme['child'] ) ) {
-				$child_message = sprintf(
-					__( ' and %1$s child theme ', Plugin_Data::plugin_text_domain() ),
-					'<strong>' . $child_name . '</strong>'
-				);
-			}
-
-			$message = sprintf(
-				__( 'The %1$s plugin requires the %2$s parent theme%3$sin order to work.%4$s', Plugin_Data::plugin_text_domain() ),
-				'<strong>' . Plugin_Data::get_plugin_display_name() . '</strong>',
-				'<strong>' . $parent_name . '</strong>',
-				$child_message,
-				$admin_link
-			);
-
-			$this->do_admin_notice( $message );
-		}
-
-		/**
 		 * Check if we have everything that is required.
 		 *
 		 * @return bool
@@ -227,89 +79,11 @@ if ( ! class_exists( Bootstrap::class ) ) {
 				$success = false;
 			}
 
-			if ( $success ) {
-				$success = $this->required_plugins_are_active();
-			}
-
-			// Plugins check passed so now check theme
-			if ( $success ) {
-				$success = $this->required_theme_is_active();
-
-				if ( ! $success ) {
-					// Admin notices for required plugins will be handled via TGM Plugin Activation, but not for the theme
-
-					// Required to use current_user_can()
-					require_once( ABSPATH . 'wp-includes/pluggable.php' );
-
-					if ( current_user_can( 'switch_themes' ) ) {
-						add_action( 'admin_notices', [ $this, 'notice_missing_required_theme' ] );
-					}
-				}
-			}
-
-			add_action( 'tgmpa_register', [ $this, 'tgmpa_register_required_plugins' ] );
-
 			return $success;
 		}
 
 		/**
-		 * Checks if all of the required plugins are active.
-		 *
-		 * @see  is_plugin_active()
-		 *
-		 * @link https://github.com/TGMPA/TGM-Plugin-Activation/issues/760 This method won't be required if this gets added.
-		 *
-		 * @return bool
-		 * @return string Either file path for plugin if installed, or just the plugin slug.
-		 */
-		private function required_plugins_are_active(): bool {
-			// The file in which is_plugin_active() is located.
-			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-
-			$result = true;
-
-			foreach ( $this->required_plugins as $required_plugin ) {
-				if ( empty( $result ) ) {
-					break;
-				}
-
-				// Only check plugins that are *required*, not the ones that are just *recommended*.
-				if ( empty( $required_plugin['required'] ) ) {
-					continue;
-				}
-
-				// Check if active
-				$basename = $this->get_plugin_basename_from_slug( $required_plugin['slug'] );
-
-				$active = is_plugin_active( $basename );
-
-				if ( ! $active ) {
-					$result = false;
-					break;
-				}
-
-				// Is active so check sufficient version
-				if ( empty( $required_plugin['version'] ) ) {
-					continue;
-				}
-
-				$plugin_data = get_plugin_data( Plugin_Data::all_plugins_dir() . $basename );
-
-				if (
-					empty( $plugin_data['Version'] )
-					|| version_compare( $required_plugin['version'], $plugin_data['Version'], '>' )
-				) {
-					$result = false;
-				}
-			}
-
-			return $result;
-		}
-
-		/**
 		 * Get the file path of the plugin file from the plugin slug, if the plugin is installed.
-		 *
-		 * @see TGM_Plugin_Activation::_get_plugin_basename_from_slug()
 		 *
 		 * @param string $slug Plugin slug (typically folder name) as provided by the developer.
 		 *
@@ -327,35 +101,5 @@ if ( ! class_exists( Bootstrap::class ) ) {
 			return $slug;
 		}
 
-		/**
-		 * Check if the required parent theme and/or child theme is active.
-		 *
-		 * @return bool True if no requirements set or they are met. False if requirements exist and are not met.
-		 */
-		private function required_theme_is_active(): bool {
-			$current_theme = wp_get_theme();
-
-			// Check Parent
-			if ( ! empty( $this->required_theme['parent'] ) ) {
-				if (
-					empty( $current_theme->get_template() )
-					|| $this->required_theme['parent'] !== $current_theme->get_template()
-				) {
-					return false;
-				}
-			}
-
-			// Check Child
-			if ( ! empty( $this->required_theme['child'] ) ) {
-				if (
-					empty( $current_theme->get_template() )
-					|| $this->required_theme['child'] !== $current_theme->get_stylesheet()
-				) {
-					return false;
-				}
-			}
-
-			return true;
-		}
 	}
 }

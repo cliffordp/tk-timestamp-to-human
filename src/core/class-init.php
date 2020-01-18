@@ -4,7 +4,6 @@ namespace TK_Timestamp_Human\Core;
 
 use TK_Timestamp_Human\Admin as Admin;
 use TK_Timestamp_Human\Common as Common;
-use TK_Timestamp_Human\Customizer as Customizer;
 use TK_Timestamp_Human\Frontend as Frontend;
 use TK_Timestamp_Human\Shortcodes as Shortcodes;
 use TK_Timestamp_Human\Plugin_Data as Plugin_Data;
@@ -36,7 +35,6 @@ if ( ! class_exists( Init::class ) ) {
 			$this->load_dependencies();
 			$this->set_locale();
 			$this->define_common_hooks();
-			//$this->define_customizer_hooks();
 			$this->define_admin_hooks();
 			$this->define_public_hooks();
 			$this->register_shortcodes();
@@ -70,21 +68,9 @@ if ( ! class_exists( Init::class ) ) {
 		 * Register all of the hooks related to both the admin area and the public-facing functionality of the plugin.
 		 */
 		private function define_common_hooks(): void {
-			$plugin_common = new Common\Common();
+			//$plugin_common = new Common\Common();
 
 			// Example: $this->loader->add_filter( 'gform_currencies', $plugin_common, 'gf_currency_usd_whole_dollars', 50 );
-		}
-
-		/**
-		 * Register all of the hooks related to the WordPress Customizer.
-		 *
-		 * Customizer must not be within Admin or Frontend or else it won't load properly.
-		 * We could have included in Common, since it is the same loading logic, but we separate it out for sanity.
-		 */
-		private function define_customizer_hooks(): void {
-			$plugin_customizer = new Customizer\Customizer();
-
-			$this->loader->add_action( 'customize_register', $plugin_customizer, 'customizer_options' );
 		}
 
 		/**
@@ -95,20 +81,6 @@ if ( ! class_exists( Init::class ) ) {
 			if ( ! is_admin() ) {
 				return;
 			}
-
-			$assets = new Admin\Assets();
-
-			// Enqueue plugin's admin assets
-			$this->loader->add_action( 'admin_enqueue_scripts', $assets, 'enqueue_styles' );
-			$this->loader->add_action( 'admin_enqueue_scripts', $assets, 'enqueue_scripts' );
-
-			$settings = new Admin\Settings();
-
-			// Plugin action links
-			$this->loader->add_filter( 'plugin_action_links_' . Plugin_Data::plugin_basename(), $settings, 'add_action_links' );
-
-			// Admin menu
-			$this->loader->add_action( 'admin_menu', $settings, 'add_plugin_admin_menu' );
 		}
 
 		/**
@@ -127,7 +99,6 @@ if ( ! class_exists( Init::class ) ) {
 
 			// Enqueue plugin's front-end assets
 			$this->loader->add_action( 'wp_enqueue_scripts', $assets, 'enqueue_styles' );
-			$this->loader->add_action( 'wp_enqueue_scripts', $assets, 'enqueue_scripts' );
 		}
 
 		/**

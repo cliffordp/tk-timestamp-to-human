@@ -2,19 +2,16 @@
 /**
  * The plugin bootstrap file
  *
- * https://github.com/cliffordp/tk-timestamp-to-human#plugin-structure
  * Introduction to the structure of this plugin's files:
  *
  * tk-timestamp-to-human/src/class-plugin_data.php - hard-coded information about the plugin, such as text domain
  * tk-timestamp-to-human/src/class-bootstrap.php - gets the plugin going, including setting required/recommended plugin dependencies
  *
  * tk-timestamp-to-human/src/frontend - public-facing functionality
- * tk-timestamp-to-human/src/admin - admin-specific functionality
  * tk-timestamp-to-human/src/common - functionality shared between the admin area and the public-facing parts
  *
  * tk-timestamp-to-human/src/common/utilities - generic functions for things like debugging, processing multidimensional arrays, handling datetimes, etc.
  * tk-timestamp-to-human/src/core - plugin core to register hooks, load files etc
- * tk-timestamp-to-human/src/customizer - WordPress Customizer functionality
  * tk-timestamp-to-human/src/shortcodes - where to create new shortcodes
  *
  * This file is read by WordPress to generate the plugin information in the plugin
@@ -26,9 +23,9 @@
  *
  * @wordpress-plugin
  * Plugin Name:       TK Timestamp to Human Readable Date
- * Plugin URI:        http://accred.arcqe.ca/
+ * Plugin URI:        https://github.com/cliffordp/tk-timestamp-to-human
  * Description:       Given a timestamp (assumed in UTC), convert to a human-readable date format using PHP named time zones.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            TourKick LLC (Clifford P)
  * Author URI:        https://tourkick.com/
  * License:           GPL version 3 or any later version
