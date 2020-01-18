@@ -13,6 +13,11 @@ Given a timestamp (assumed in UTC), convert to a human-readable date format usin
 
 == Changelog ==
 
+= 1.0.1 =
+
+* January 18, 2020
+* Remove link to settings because there aren't any settings to see.
+
 = 1.0.0 =
 
 * September 24, 2019

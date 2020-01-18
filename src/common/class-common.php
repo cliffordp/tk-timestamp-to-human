@@ -33,19 +33,6 @@ if ( ! class_exists( Common::class ) ) {
 		}
 
 		/**
-		 * Get the output's wrapper class.
-		 *
-		 * Used by the Customizer to add the quick edit pencil icon within the previewer.
-		 *
-		 * @return string
-		 */
-		public function get_wrapper_class(): string {
-			$class = Plugin_Data::plugin_text_domain_underscores() . '-wrapper';
-
-			return esc_attr( $class );
-		}
-
-		/**
 		 * Given a specific timestamp, or a custom field name from which to get a timestamp for a post,
 		 * get its string value in the given format in the time zone from WordPress' General Settings.
 		 *

@@ -14,7 +14,6 @@
  *
  * tk-timestamp-to-human/src/common/utilities - generic functions for things like debugging, processing multidimensional arrays, handling datetimes, etc.
  * tk-timestamp-to-human/src/core - plugin core to register hooks, load files etc
- * tk-timestamp-to-human/src/customizer - WordPress Customizer functionality
  * tk-timestamp-to-human/src/shortcodes - where to create new shortcodes
  *
  * This file is read by WordPress to generate the plugin information in the plugin
