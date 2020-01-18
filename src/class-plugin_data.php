@@ -21,7 +21,7 @@ if ( ! class_exists( Plugin_Data::class ) ) {
 		 * @return string
 		 */
 		public static function plugin_version(): string {
-			return '1.0.0';
+			return '1.0.1';
 		}
 
 		/**

@@ -2,7 +2,6 @@
 /**
  * The plugin bootstrap file
  *
- * https://github.com/cliffordp/tk-timestamp-to-human#plugin-structure
  * Introduction to the structure of this plugin's files:
  *
  * tk-timestamp-to-human/src/class-plugin_data.php - hard-coded information about the plugin, such as text domain
@@ -24,9 +23,9 @@
  *
  * @wordpress-plugin
  * Plugin Name:       TK Timestamp to Human Readable Date
- * Plugin URI:        http://accred.arcqe.ca/
+ * Plugin URI:        https://github.com/cliffordp/tk-timestamp-to-human
  * Description:       Given a timestamp (assumed in UTC), convert to a human-readable date format using PHP named time zones.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            TourKick LLC (Clifford P)
  * Author URI:        https://tourkick.com/
  * License:           GPL version 3 or any later version
