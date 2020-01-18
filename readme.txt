@@ -62,6 +62,7 @@ This can be handy for using with WP All Export (http://www.wpallimport.com/tour/
 * Fix for the shortcode's default date format not coming through, making the shortcode not have a valid result.
 * Added `$format` as the 2nd parameter for `tk_timestamp_to_human_wp_all_export()`.
 * Fallback time zone (if WP's isn't a valid PHP time zone) changed from 'America/Edmonton' to 'UTC'.
+* Removed this plugin recommending installing WP All Export plugin and all code regarding required plugins or themes.
 
 = 1.0.0 =
 
