@@ -3,7 +3,7 @@
 Contributors: cliffpaulick
 Tags: timestamp, shortcode, WPAllExport
 Requires at least: 4.5
-Tested up to: 5.2.3
+Tested up to: 5.3.2
 Requires PHP: 7.1.0
 Stable tag: 1.0.0
 License: GPL version 3 or any later version
@@ -63,6 +63,7 @@ This can be handy for using with WP All Export (http://www.wpallimport.com/tour/
 * Added `$format` as the 2nd parameter for `tk_timestamp_to_human_wp_all_export()`.
 * Fallback time zone (if WP's isn't a valid PHP time zone) changed from 'America/Edmonton' to 'UTC'.
 * Removed this plugin recommending installing WP All Export plugin and all code regarding required plugins or themes.
+* Tested working with WordPress 5.3+ even though this plugin's code was not updated to use its new `wp_time()`; we just don't need it for this plugin.
 
 = 1.0.0 =
 
