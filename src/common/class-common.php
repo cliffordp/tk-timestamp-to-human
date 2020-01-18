@@ -79,6 +79,11 @@ if ( ! class_exists( Common::class ) ) {
 
 			$timestamp = (int) $timestamp;
 
+			// If $format = '', the result won't be an object, not a string, and the shortcode will error
+			if ( empty( $format ) ) {
+				$format = 'c';
+			}
+
 			$date = $timing->get_datetime_from_utc_timestamp( $timestamp, $format, $time_zone );
 
 			if (

@@ -22,16 +22,19 @@ if ( ! class_exists( Timing::class ) ) {
 		/**
 		 * Get the time zone string from WordPress General Settings, with America/Chicago as the fallback.
 		 *
-		 * @link https://www.php.net/manual/timezones.php Ideally, your WordPress time zone is already one of these.
+		 * @link  https://www.php.net/manual/timezones.php Ideally, your WordPress time zone is already one of these.
 		 *                                                If not, at least make sure that your fallback is.
 		 *
-		 * @see  timezone_identifiers_list()
+		 * @see   timezone_identifiers_list()
+		 *
+		 * @since 1.0.0
+		 * @since 1.0.1 Fallback changed from 'America/Edmonton' to 'UTC'.
 		 *
 		 * @param string $fallback The valid PHP time zone string to use if WordPress is not set to a valid one.
 		 *
 		 * @return string
 		 */
-		public function get_php_time_zone_string_from_wp( string $fallback = 'America/Edmonton' ): string {
+		public function get_php_time_zone_string_from_wp( string $fallback = 'UTC' ): string {
 			$time_zone = get_option( 'timezone_string' ); // could return NULL
 
 			if ( ! in_array( $time_zone, timezone_identifiers_list() ) ) {
