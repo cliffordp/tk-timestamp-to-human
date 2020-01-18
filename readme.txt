@@ -26,19 +26,25 @@ Given a timestamp (assumed in UTC), convert to a human-readable date format usin
 = Shortcode Examples =
 
 1)
-Shortcode: `[tk_timestamp_human timestamp="1608299220" time_zone="America/Chicago"]`
+Shortcode: `[tk_timestamp_human timestamp="1608299220"]`
 
-Expected Result: 2020-12-18T07:47:00-06:00
+(Assuming your WordPress General Settings time zone is set to 'Europe/Amsterdam')
+Expected Result: `2020-12-18T14:47:00+01:00`
 
 2)
-Shortcode: `[tk_timestamp_human timestamp="1608299220" time_zone="UTC"]`
+Shortcode: `[tk_timestamp_human timestamp="1608299220" time_zone="America/Chicago"]`
 
-Expected Result: 2020-12-18T13:47:00+00:00
+Expected Result: `2020-12-18T07:47:00-06:00`
 
 3)
+Shortcode: `[tk_timestamp_human timestamp="1608299220" time_zone="UTC"]`
+
+Expected Result: `2020-12-18T13:47:00+00:00`
+
+4)
 Shortcode: `[tk_timestamp_human timestamp="1608299220" time_zone="America/Chicago" format="j F, Y"]`
 
-Expected Result: 18 December, 2020
+Expected Result: `18 December, 2020`
 
 = Global Function =
 
