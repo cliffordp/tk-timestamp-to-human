@@ -68,7 +68,7 @@ if ( ! class_exists( Init::class ) ) {
 		 * Register all of the hooks related to both the admin area and the public-facing functionality of the plugin.
 		 */
 		private function define_common_hooks(): void {
-			$plugin_common = new Common\Common();
+			//$plugin_common = new Common\Common();
 
 			// Example: $this->loader->add_filter( 'gform_currencies', $plugin_common, 'gf_currency_usd_whole_dollars', 50 );
 		}
@@ -81,12 +81,6 @@ if ( ! class_exists( Init::class ) ) {
 			if ( ! is_admin() ) {
 				return;
 			}
-
-			$assets = new Admin\Assets();
-
-			// Enqueue plugin's admin assets
-			$this->loader->add_action( 'admin_enqueue_scripts', $assets, 'enqueue_styles' );
-			$this->loader->add_action( 'admin_enqueue_scripts', $assets, 'enqueue_scripts' );
 		}
 
 		/**
@@ -105,7 +99,6 @@ if ( ! class_exists( Init::class ) ) {
 
 			// Enqueue plugin's front-end assets
 			$this->loader->add_action( 'wp_enqueue_scripts', $assets, 'enqueue_styles' );
-			$this->loader->add_action( 'wp_enqueue_scripts', $assets, 'enqueue_scripts' );
 		}
 
 		/**

@@ -9,7 +9,6 @@
  * tk-timestamp-to-human/src/class-bootstrap.php - gets the plugin going, including setting required/recommended plugin dependencies
  *
  * tk-timestamp-to-human/src/frontend - public-facing functionality
- * tk-timestamp-to-human/src/admin - admin-specific functionality
  * tk-timestamp-to-human/src/common - functionality shared between the admin area and the public-facing parts
  *
  * tk-timestamp-to-human/src/common/utilities - generic functions for things like debugging, processing multidimensional arrays, handling datetimes, etc.

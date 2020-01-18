@@ -17,6 +17,7 @@ Given a timestamp (assumed in UTC), convert to a human-readable date format usin
 
 * January 18, 2020
 * Remove link to settings because there aren't any settings to see.
+* Remove loading of empty CSS/JS files on Admin and Frontend.
 
 = 1.0.0 =
 

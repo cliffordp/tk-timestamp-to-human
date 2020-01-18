@@ -11,7 +11,7 @@ use TK_Timestamp_Human\Common\Common as Common;
 
 if ( ! class_exists( TK_Timestamp_Human::class ) ) {
 	/**
-	 * The class for the [tk_timestamp_human] shortcode.
+	 * The class for the `[tk_timestamp_human]` shortcode.
 	 */
 	final class TK_Timestamp_Human extends Abstract_Shortcode {
 		/**

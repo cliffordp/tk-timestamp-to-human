@@ -21,12 +21,5 @@ if ( ! class_exists( Assets::class ) ) {
 		public function enqueue_styles(): void {
 			wp_enqueue_style( Plugin_Data::plugin_text_domain(), plugin_dir_url( __FILE__ ) . 'css/style.css', [], Plugin_Data::plugin_version(), 'all' );
 		}
-
-		/**
-		 * Register the JavaScript for the public-facing side of the site.
-		 */
-		public function enqueue_scripts(): void {
-			wp_enqueue_script( Plugin_Data::plugin_text_domain(), plugin_dir_url( __FILE__ ) . 'js/script.js', [ 'jquery' ], Plugin_Data::plugin_version(), false );
-		}
 	}
 }
