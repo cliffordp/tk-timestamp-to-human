@@ -33,7 +33,6 @@ if ( ! class_exists( Init::class ) ) {
 		 */
 		public function __construct() {
 			$this->load_dependencies();
-			$this->set_locale();
 			$this->define_common_hooks();
 			$this->define_admin_hooks();
 			$this->define_public_hooks();
@@ -44,24 +43,11 @@ if ( ! class_exists( Init::class ) ) {
 		 * Loads the following required dependencies for this plugin.
 		 *
 		 * - Loader - Orchestrates the hooks of the plugin.
-		 * - Internationalization_I18n - Defines internationalization functionality.
 		 * - Admin - Defines all hooks for the admin area.
 		 * - Frontend - Defines all hooks for the public side of the site.
 		 */
 		private function load_dependencies(): void {
 			$this->loader = new Loader();
-		}
-
-		/**
-		 * Define the locale for this plugin for internationalization.
-		 *
-		 * Uses the Internationalization_I18n class in order to set the domain and to register the hook
-		 * with WordPress.
-		 */
-		private function set_locale(): void {
-			$plugin_i18n = new Internationalization_I18n();
-
-			$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 		}
 
 		/**

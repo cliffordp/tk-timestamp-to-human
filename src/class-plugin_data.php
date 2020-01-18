@@ -43,6 +43,10 @@ if ( ! class_exists( Plugin_Data::class ) ) {
 		 *
 		 * Must match the plugin's main directory and its main PHP filename.
 		 *
+		 * @since 1.0.0
+		 * @since 1.0.1 FYI: This plugin no longer loads its own text domain since published to WordPress.org, bt this
+		 *              function is still used for things like getting the plugin slug, such as for a class name.
+		 *
 		 * @return string
 		 */
 		public static function plugin_text_domain(): string {
@@ -68,7 +72,7 @@ if ( ! class_exists( Plugin_Data::class ) ) {
 		 * @return string
 		 */
 		public static function get_plugin_display_name(): string {
-			return esc_html_x( 'TK Timestamp to Human Readable Date', 'Plugin name for display', self::plugin_text_domain() );
+			return esc_html_x( 'TK Timestamp to Human Readable Date', 'Plugin name for display', 'tk-timestamp-to-human' );
 		}
 
 		/**

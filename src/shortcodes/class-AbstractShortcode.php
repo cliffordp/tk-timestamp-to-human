@@ -121,14 +121,14 @@ abstract class Abstract_Shortcode {
 			! is_string( $cause )
 			|| '' === $cause
 		) {
-			$cause = esc_html_x( 'Unspecified', 'Shortcode error cause default text', Plugin_Data::plugin_text_domain() );
+			$cause = esc_html_x( 'Unspecified', 'Shortcode error cause default text', 'tk-timestamp-to-human' );
 		}
 
 		$message = sprintf(
 			esc_html_x(
 				'Your attempt to use the `[%1$s]` shortcode resulted in an error because: %2$s. Please reference the documentation or inspect the code and try again. (Message only shown to users with the `%3$s` capability.)',
 				'Shortcode error message',
-				Plugin_Data::plugin_text_domain()
+				'tk-timestamp-to-human'
 			),
 			$this->get_tag(),
 			$cause,

@@ -64,8 +64,10 @@ This can be handy for using with WP All Export (http://www.wpallimport.com/tour/
 * Fallback time zone (if WP's isn't a valid PHP time zone) changed from 'America/Edmonton' to 'UTC'.
 * Removed this plugin recommending installing WP All Export plugin and all code regarding required plugins or themes.
 * Tested working with WordPress 5.3+ even though this plugin's code was not updated to use its new `wp_time()`; we just don't need it for this plugin.
+* Language files and translatable strings setup for publishing to WordPress.org
 
 = 1.0.0 =
 
 * September 24, 2019
 * Initial version.
+* FYI: Was not available on WordPress.org.
