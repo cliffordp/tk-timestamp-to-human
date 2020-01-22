@@ -10,5 +10,6 @@
 /node_modules/
 /phpcs.xml
 /phpunit.xml
+/tk-timestamp-to-human
 /vendor/
 _DS_Store

@@ -52,11 +52,18 @@ The `tk_timestamp_to_human_wp_all_export()` global function is available as a wr
 
 This can be handy for using with WP All Export (http://www.wpallimport.com/tour/export-developer-friendly/), such as to export a custom field that's a UTC timestamp value to a human-readable format, such as if the system you're moving the data to requires a specific format.
 
+== Screenshots ==
+
+1. Basic usage
+2. Example in UTC
+3. Example in America/Chicago
+3. Example in America/Chicago, with formatting
+
 == Changelog ==
 
 = 1.0.1 =
 
-* January 18, 2020
+* January 21, 2020
 * Remove link to settings because there aren't any settings to see.
 * Remove loading of empty CSS/JS files on Admin and Frontend.
 * Fix for the shortcode's default date format not coming through, making the shortcode not have a valid result.
