@@ -1,7 +1,7 @@
 === TK Timestamp to Human Readable Date ===
 
 Contributors: cliffpaulick
-Tags: timestamp, shortcode, WPAllExport
+Tags: timestamp, shortcode, import-export, toolset
 Requires at least: 4.5
 Tested up to: 5.3.2
 Requires PHP: 7.1.0
@@ -15,13 +15,13 @@ Given a timestamp (assumed in UTC), convert to a human-readable date format usin
 
 = All Available Shortcode Arguments =
 
-```
+<pre>
 'timestamp'  => '', // or use the 'post_id' and 'field_timestamp' arguments
 'format'     => 'c', // see https://www.php.net/manual/en/function.date.php
 'time_zone'  => '', // defaults to WP's General Settings time zone (if valid PHP time zone), else UTC. Only supports a PHP named time zone -- see https://www.php.net/manual/en/timezones.php
 'field_name' => '', // the raw name (including the `wpcf-` prefix if a Types field) or a custom field that should have a UTC timestamp as its value
 'post_id'    => '', // applicable if using the 'field_timestamp' argument - defaults to current post if empty
-```
+</pre>
 
 = Shortcode Examples =
 
@@ -50,7 +50,7 @@ Expected Result: `18 December, 2020`
 
 The `tk_timestamp_to_human_wp_all_export()` global function is available as a wrapper for the shortcode, using all its defaults except requiring the Timestamp argument and optionally passing the Format and Time Zone parameters.
 
-This can be handy for using with WP All Export (http://www.wpallimport.com/tour/export-developer-friendly/), such as to export a custom field that's a UTC timestamp value to a human-readable format, such as if the system you're moving the data to requires a specific format.
+This can be handy for using with WP All Export ([http://www.wpallimport.com/tour/export-developer-friendly/](http://www.wpallimport.com/tour/export-developer-friendly/)), such as to export a custom field that's a UTC timestamp value to a human-readable format, such as if the system you're moving the data to requires a specific format.
 
 == Screenshots ==
 
